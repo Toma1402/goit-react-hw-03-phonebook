@@ -13,6 +13,7 @@ export class ContactForm extends Component {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
+
   render() {
     return (
       <Form autoComplete="off" onSubmit={this.handleSubmit}>

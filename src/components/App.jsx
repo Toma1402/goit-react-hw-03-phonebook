@@ -46,6 +46,19 @@ export class App extends Component {
     );
     return newArray;
   };
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contacts');
+    //console.log(savedContacts);
+    if (savedContacts !== null) {
+      const parsedContacts = JSON.parse(savedContacts);
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
   render() {
     return (
       <>
